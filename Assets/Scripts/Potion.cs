@@ -9,10 +9,17 @@ public class Potion : MonoBehaviour
 
 	void Update()
 	{
-		if (GetComponent<SpriteRenderer>().bounds.Intersects(player.GetComponent<SpriteRenderer>().bounds))
+		if (SpriteOverlap(gameObject, player))
 		{
 			// change the sprite of the player by accessing its sprite controller
 			player.GetComponent<SpriteRenderer>().sprite = oldMan;
 		}
+	}
+
+	bool SpriteOverlap(GameObject go1, GameObject go2)
+	{
+		Bounds b1 = go1.GetComponent<SpriteRenderer>().bounds;
+		Bounds b2 = go2.GetComponent<SpriteRenderer>().bounds;
+		return b1.Intersects(b2);
 	}
 }

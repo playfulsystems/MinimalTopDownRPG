@@ -12,11 +12,7 @@ public class RevealDialog : MonoBehaviour
 	void Update()
 	{
 		// checks to see if the player bounds intersects with the other character
-		// here is the SpriteRenderer documentation:
-		// https://docs.unity3d.com/ScriptReference/SpriteRenderer.html
-
-
-		if (character.GetComponent<SpriteRenderer>().bounds.Intersects(player.GetComponent<SpriteRenderer>().bounds))
+		if (SpriteOverlap(character, player))
 		{
 			// passing true to SetActive on a gameobject makes it visible
 			dialog.SetActive(true);
@@ -26,5 +22,12 @@ public class RevealDialog : MonoBehaviour
 			// passing false to SetActive on a gameobject makes it invisible
 			dialog.SetActive(false);
 		}
+	}
+
+	bool SpriteOverlap(GameObject go1, GameObject go2)
+	{
+		Bounds b1 = go1.GetComponent<SpriteRenderer>().bounds;
+		Bounds b2 = go2.GetComponent<SpriteRenderer>().bounds;
+		return b1.Intersects(b2);
 	}
 }
