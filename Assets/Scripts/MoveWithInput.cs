@@ -4,33 +4,25 @@ using UnityEngine;
 
 public class MoveWithInput : MonoBehaviour
 {
-    // Update is called once per frame
+    float speed = 0.022f;
+
     void Update()
     {
-		// checks if the user presses the left arrow and subtracts from current x position if so
-		if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			// to set a Vector2, you must create a new Vector2 set with two values
-			transform.position = new Vector2(transform.position.x - 0.025f, transform.position.y);
-		}
-
-		// checks if the user presses the right arrow and adds to current x position if so
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			transform.position = new Vector2(transform.position.x + 0.025f, transform.position.y);
-		}
-
-		// checks if the user presses the up arrow and adds to current y position if so
-		if (Input.GetKey(KeyCode.UpArrow))
-		{
-			transform.position = new Vector2(transform.position.x, transform.position.y + 0.025f);
-		}
-
-		// checks if the user presses the down arrow and subtracts from current y position if so
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
-			transform.position = new Vector2(transform.position.x, transform.position.y - 0.025f);
-		}
-
-	}
+        if (Input.GetKey("left"))
+        {
+            transform.position += new Vector3(-speed, 0, 0);
+        }
+        if (Input.GetKey("right"))
+        {
+            transform.position += new Vector3(speed, 0, 0);
+        }
+        if (Input.GetKey("up"))
+        {
+            transform.position += new Vector3(0, speed, 0);
+        }
+        if (Input.GetKey("down"))
+        {
+            transform.position += new Vector3(0, -speed, 0);
+        }
+    }
 }
